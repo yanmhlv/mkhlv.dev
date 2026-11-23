@@ -1,9 +1,11 @@
 {{ define "main" }}
 <article class="term" aria-labelledby="profile-name">
   <div class="term__chrome" aria-hidden="true">
-    <span class="term__dot term__dot--r"></span>
-    <span class="term__dot term__dot--y"></span>
-    <span class="term__dot term__dot--g"></span>
+    <span class="term__dots">
+      <span class="term__dot term__dot--r"></span>
+      <span class="term__dot term__dot--y"></span>
+      <span class="term__dot term__dot--g"></span>
+    </span>
     <span class="term__title">ian@mkhlv:~</span>
   </div>
 
@@ -14,12 +16,12 @@
 
     <div class="term__profile">
       {{ $image := resources.Get site.Params.image }}
-      {{ $avatar := $image.Resize "188x webp lossless NearestNeighbor" }}
+      {{ $avatar := $image.Resize "192x webp lossless NearestNeighbor" }}
       <img
         class="term__avatar"
         src="{{ $avatar.RelPermalink }}"
-        srcset="{{ range $i, $w := slice 70 94 140 188 210 282 }}{{ if $i }}, {{ end }}{{ ($image.Resize (printf "%dx webp lossless NearestNeighbor" $w)).RelPermalink }} {{ $w }}w{{ end }}"
-        sizes="(max-width: 480px) 70px, 94px"
+        srcset="{{ range $i, $w := slice 72 96 144 192 216 288 }}{{ if $i }}, {{ end }}{{ ($image.Resize (printf "%dx webp lossless NearestNeighbor" $w)).RelPermalink }} {{ $w }}w{{ end }}"
+        sizes="(width <= 480px) 72px, 96px"
         alt=""
         width="96"
         height="96"
